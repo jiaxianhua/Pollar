@@ -37,13 +37,13 @@ extension FPSLabel: FPSCounterDelegate {
         
         switch fps {
         case 45...:
-//            self.backgroundColor = .green
+            self.backgroundColor = .green
             self.textColor = .black
         case 35...:
-//            self.backgroundColor = .orange
+            self.backgroundColor = .orange
             self.textColor = .white
         default:
-//            self.backgroundColor = .red
+            self.backgroundColor = .red
             self.textColor = .white
         }
     }

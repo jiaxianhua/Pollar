@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Polarr
 //
 //  Created by developer on 8/5/19.
