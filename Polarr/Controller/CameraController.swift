@@ -16,7 +16,7 @@ class CameraController: NSObject {
     }
     
     var captureSession: AVCaptureSession?
-    var capturePreset = AVCaptureSession.Preset.hd1280x720
+    var capturePreset = AVCaptureSession.Preset.hd1920x1080
     let captureQueue = DispatchQueue(label: "com.iosdevlog.capturesession", attributes: [])
     var output: ((CMSampleBuffer) -> Void)?
     var videoInput: AVCaptureDeviceInput?
