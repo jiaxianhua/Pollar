@@ -10,7 +10,7 @@ import Foundation
 
 public class BrightnessFilter: BasicImageFilter {
     
-    public var brightness:Float = 0.0
+    public var brightness:Float = 0
     
     public init() {
         super.init(name: "Brightness")

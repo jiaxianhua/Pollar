@@ -30,7 +30,8 @@ import AVFoundation
             return nil
         }
         
-        let outputURL = documentsDirectoryURL.appendingPathComponent(NSUUID().uuidString).appendingPathExtension("mp4")
+        let uuidString = NSUUID().uuidString
+        let outputURL = documentsDirectoryURL.appendingPathComponent(uuidString).appendingPathExtension("mp4")
         
         do {
             self.assetWriter = try AVAssetWriter(url: outputURL, fileType: AVFileType.mp4)
@@ -54,6 +55,7 @@ import AVFoundation
     public func stopRecording(completion: @escaping ((URL) -> Void)) {
         self.queue.sync {
             self.recording = false
+            
             self.assetWriter.finishWriting {
                 DispatchQueue.main.async {
                     completion(self.assetWriter.outputURL)
@@ -65,7 +67,7 @@ import AVFoundation
     // MARK Internal
     
     func startWriter(sampleBuffer: CMSampleBuffer) {
-        guard hasAudioInput, hasVideoInput else {
+        guard hasAudioInput || hasVideoInput else {
             return
         }
         

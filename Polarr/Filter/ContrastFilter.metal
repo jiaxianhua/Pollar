@@ -16,7 +16,7 @@ kernel void Contrast(
                      uint2 gid [[thread_position_in_grid]])
 {
     const float4 inColor = inTexture.read(gid);
-    const float4 outColor = float4((inColor.rgb-float3(0.5))* *contrast + float3(0.5),inColor.a);
+    const float4 outColor = float4((inColor.rgb-float3(0.5))* *contrast + float3(0.5), inColor.a);
     outTexture.write(outColor, gid);
 }
 

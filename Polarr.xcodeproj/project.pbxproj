@@ -11,7 +11,6 @@
 		8B917D1E22F82E6F002A473B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B917D1D22F82E6F002A473B /* MainViewController.swift */; };
 		8B917D2122F82E70002A473B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B917D1F22F82E70002A473B /* Main.storyboard */; };
 		8B917D2322F82E77002A473B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B917D2222F82E77002A473B /* Assets.xcassets */; };
-		8B917D2622F82E77002A473B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B917D2422F82E77002A473B /* LaunchScreen.storyboard */; };
 		8B917D3122F831A5002A473B /* FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B917D3022F831A5002A473B /* FPSLabel.swift */; };
 		8B917D3322F831B2002A473B /* FPSLabel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B917D3222F831B2002A473B /* FPSLabel.xib */; };
 		8B917D3522F831FF002A473B /* FPSCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B917D3422F831FF002A473B /* FPSCounter.swift */; };
@@ -28,6 +27,8 @@
 		8B917D5022F91D2F002A473B /* MetalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B917D4D22F91D2F002A473B /* MetalController.swift */; };
 		8B917D5122F91D2F002A473B /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B917D4E22F91D2F002A473B /* CameraController.swift */; };
 		8B917D5222F91D2F002A473B /* RecordingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B917D4F22F91D2F002A473B /* RecordingController.swift */; };
+		8B917D5522F94E90002A473B /* PoSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B917D5422F94E90002A473B /* PoSlider.swift */; };
+		8B917D5922F95C57002A473B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B917D5822F95C57002A473B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +37,6 @@
 		8B917D1D22F82E6F002A473B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8B917D2022F82E70002A473B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8B917D2222F82E77002A473B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		8B917D2522F82E77002A473B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B917D2722F82E77002A473B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B917D3022F831A5002A473B /* FPSLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPSLabel.swift; sourceTree = "<group>"; };
 		8B917D3222F831B2002A473B /* FPSLabel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FPSLabel.xib; sourceTree = "<group>"; };
@@ -54,6 +54,8 @@
 		8B917D4D22F91D2F002A473B /* MetalController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalController.swift; sourceTree = "<group>"; };
 		8B917D4E22F91D2F002A473B /* CameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		8B917D4F22F91D2F002A473B /* RecordingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingController.swift; sourceTree = "<group>"; };
+		8B917D5422F94E90002A473B /* PoSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoSlider.swift; sourceTree = "<group>"; };
+		8B917D5822F95C57002A473B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		8B917D1A22F82E6F002A473B /* Polarr */ = {
 			isa = PBXGroup;
 			children = (
+				8B917D5322F94E62002A473B /* View */,
 				8B917D4C22F91AD4002A473B /* Controller */,
 				8B917D3722F91620002A473B /* Extension */,
 				8B917D3622F9160D002A473B /* Filter */,
@@ -94,8 +97,8 @@
 				8B917D1D22F82E6F002A473B /* MainViewController.swift */,
 				8B917D1F22F82E70002A473B /* Main.storyboard */,
 				8B917D2222F82E77002A473B /* Assets.xcassets */,
-				8B917D2422F82E77002A473B /* LaunchScreen.storyboard */,
 				8B917D2722F82E77002A473B /* Info.plist */,
+				8B917D5822F95C57002A473B /* LaunchScreen.storyboard */,
 			);
 			path = Polarr;
 			sourceTree = "<group>";
@@ -142,6 +145,14 @@
 				8B917D4F22F91D2F002A473B /* RecordingController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8B917D5322F94E62002A473B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B917D5422F94E90002A473B /* PoSlider.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,8 +213,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B917D2622F82E77002A473B /* LaunchScreen.storyboard in Resources */,
 				8B917D2322F82E77002A473B /* Assets.xcassets in Resources */,
+				8B917D5922F95C57002A473B /* LaunchScreen.storyboard in Resources */,
 				8B917D3322F831B2002A473B /* FPSLabel.xib in Resources */,
 				8B917D2122F82E70002A473B /* Main.storyboard in Resources */,
 			);
@@ -225,6 +236,7 @@
 				8B917D3922F918DD002A473B /* FilteringPipeline.swift in Sources */,
 				8B917D1E22F82E6F002A473B /* MainViewController.swift in Sources */,
 				8B917D4B22F9196C002A473B /* Metal+Ext.swift in Sources */,
+				8B917D5522F94E90002A473B /* PoSlider.swift in Sources */,
 				8B917D5022F91D2F002A473B /* MetalController.swift in Sources */,
 				8B917D1C22F82E6F002A473B /* AppDelegate.swift in Sources */,
 				8B917D4222F9190C002A473B /* SaturationFilter.swift in Sources */,
@@ -245,14 +257,6 @@
 				8B917D2022F82E70002A473B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		8B917D2422F82E77002A473B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8B917D2522F82E77002A473B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -309,7 +313,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -364,7 +368,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -379,7 +383,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8W3A83N2L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Polarr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -397,7 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J8W3A83N2L;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Polarr/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

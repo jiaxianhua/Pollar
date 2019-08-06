@@ -18,24 +18,128 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="wJl-hL-s20">
+                                <rect key="frame" x="0.0" y="64.5" width="414" height="831.5"/>
+                            </mtkView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="zTx-Q5-Nm1">
+                                <rect key="frame" x="20" y="600" width="374" height="170"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zfV-Ku-05S">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contrast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G25-zO-2jB" userLabel="Contrast">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="mXn-nZ-d2W"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="I09-lt-rFX" userLabel="Contrast Slider" customClass="PoSlider" customModule="Polarr" customModuleProvider="target">
+                                                <rect key="frame" x="118" y="0.0" width="258" height="31"/>
+                                                <connections>
+                                                    <action selector="contrastValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Oec-Ar-f1K"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZXU-jD-C8V">
+                                        <rect key="frame" x="0.0" y="70" width="374" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZ3-M1-6sT" userLabel="Saturation">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="0mf-gC-IoH"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="0be-9x-tzR" userLabel="Saturation Slider" customClass="PoSlider" customModule="Polarr" customModuleProvider="target">
+                                                <rect key="frame" x="118" y="0.0" width="258" height="31"/>
+                                                <connections>
+                                                    <action selector="saturationValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="1dl-Wq-Kbj"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kOc-1O-j9W">
+                                        <rect key="frame" x="0.0" y="140" width="374" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="daF-nL-wuc" userLabel="Brightness">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="DYp-Eu-ttL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="c10-g0-IWb" userLabel="Brightness Slider" customClass="PoSlider" customModule="Polarr" customModuleProvider="target">
+                                                <rect key="frame" x="118" y="0.0" width="258" height="31"/>
+                                                <connections>
+                                                    <action selector="brightnessValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uf2-ts-e3z"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60 FPS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOc-kE-AO0" customClass="FPSLabel" customModule="Polarr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQQ-5M-Nyg" userLabel="Start / Stop">
+                                <rect key="frame" x="171" y="790" width="72" height="72"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wQQ-5M-Nyg" secondAttribute="height" multiplier="1:1" id="Hto-Uu-nEY"/>
+                                    <constraint firstAttribute="width" constant="72" id="IYY-vg-lgO"/>
+                                </constraints>
+                                <state key="normal" image="record">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <state key="selected" image="stop_record"/>
+                                <connections>
+                                    <action selector="startStopButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e4f-Rp-dAo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="wJl-hL-s20" secondAttribute="bottom" id="157-q2-ANj"/>
+                            <constraint firstItem="wQQ-5M-Nyg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C8y-my-Kj8"/>
                             <constraint firstItem="jOc-kE-AO0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DUH-s4-Vwe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zTx-Q5-Nm1" secondAttribute="trailing" constant="20" id="ERZ-9C-PPo"/>
+                            <constraint firstItem="wQQ-5M-Nyg" firstAttribute="top" secondItem="zTx-Q5-Nm1" secondAttribute="bottom" constant="20" id="GDQ-jt-o1X"/>
+                            <constraint firstItem="wQQ-5M-Nyg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="HoD-1Y-O7D"/>
+                            <constraint firstItem="zTx-Q5-Nm1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NF9-8Y-zPT"/>
+                            <constraint firstItem="wJl-hL-s20" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Pes-dA-1Kh"/>
+                            <constraint firstItem="wJl-hL-s20" firstAttribute="top" secondItem="jOc-kE-AO0" secondAttribute="bottom" id="Xka-mF-nms"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jOc-kE-AO0" secondAttribute="trailing" id="Y5a-0W-cGf"/>
                             <constraint firstItem="jOc-kE-AO0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="q8U-1L-5Yt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wJl-hL-s20" secondAttribute="trailing" id="v9m-H1-xMC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="brightnessSlider" destination="c10-g0-IWb" id="Zjr-cr-yaT"/>
+                        <outlet property="contrastSlider" destination="I09-lt-rFX" id="Cae-LS-twn"/>
+                        <outlet property="metalView" destination="wJl-hL-s20" id="cDb-N3-cCA"/>
+                        <outlet property="saturationSlider" destination="0be-9x-tzR" id="uev-Ac-CBm"/>
+                        <outlet property="startStopButton" destination="wQQ-5M-Nyg" id="c71-2g-WZl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="record" width="88" height="88"/>
+        <image name="stop_record" width="88" height="88"/>
+    </resources>
 </document>

@@ -8,7 +8,7 @@
 
 public class SaturationFilter: BasicImageFilter {
     
-    public var saturation:Float = 1.0
+    public var saturation:Float = 1
     
     public init() {
         super.init(name: "Saturation")

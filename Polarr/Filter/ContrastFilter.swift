@@ -8,7 +8,7 @@
 
 public class ContrastFilter: BasicImageFilter {
     
-    public var contrast:Float = 1.0
+    public var contrast:Float = 1
     
     public init() {
         super.init(name: "Contrast")
