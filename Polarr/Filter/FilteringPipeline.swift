@@ -10,6 +10,7 @@ import MetalKit
 
 class FilteringPipeline {
     private var filters = [BasicImageFilter]()
+    let dispatch = DispatchQueue.global(qos: .userInteractive)
     
     lazy var metalDevice:  MTLDevice? = {
         return MTLCreateSystemDefaultDevice()
@@ -50,23 +51,24 @@ class FilteringPipeline {
     }
     
     func filter(inputTexture: MTLTexture, callBack:@escaping (_ resultTexture: MTLTexture?) -> ())  {
-        
-        var texture:MTLTexture? = inputTexture
-        
-        // Walk through each of our filters and add to commandQueue
-        for filter in filters {
-            guard let currentTexture = texture,
-                let emptyTexture = currentTexture.sameSizeEmptyTexture(),
-                let pipelineState = filter.pipelineState else {
-                    continue
-            }
-            var textures = [MTLTexture]()
-            textures.append(emptyTexture)
-            textures.append(currentTexture)
-            self.commandQueue?.addCommand(pipelineState: (pipelineState), textures: textures, factors: filter.getFactors())
+       dispatch.async { [weak self] in
+            var texture:MTLTexture? = inputTexture
             
-            texture = textures.first
+            // Walk through each of our filters and add to commandQueue
+            for filter in self!.filters {
+                guard let currentTexture = texture,
+                    let emptyTexture = currentTexture.sameSizeEmptyTexture(),
+                    let pipelineState = filter.pipelineState else {
+                        continue
+                }
+                var textures = [MTLTexture]()
+                textures.append(emptyTexture)
+                textures.append(currentTexture)
+                self?.commandQueue?.addCommand(pipelineState: (pipelineState), textures: textures, factors: filter.getFactors())
+                
+                texture = textures.first
+            }
+            callBack(texture)
         }
-        callBack(texture)
     }
 }

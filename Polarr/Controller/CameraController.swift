@@ -10,14 +10,14 @@ import AVFoundation
 import UIKit
 
 class CameraController: NSObject {
-    
+
     public enum CaptureSessionError: Error {
         case deviceNotFound
     }
-    
+
     var captureSession: AVCaptureSession?
     var capturePreset = AVCaptureSession.Preset.hd1920x1080
-    let captureQueue = DispatchQueue(label: "com.iosdevlog.capturesession", attributes: [])
+    let captureQueue = DispatchQueue(label: "com.iosdevlog.capturesession", qos: .userInteractive, attributes: [])
     var output: ((CMSampleBuffer) -> Void)?
     var videoInput: AVCaptureDeviceInput?
     var videoOutput: AVCaptureVideoDataOutput?
@@ -32,22 +32,22 @@ class CameraController: NSObject {
         guard error == nil, captureSession != nil else {
             fatalError("Unable to create metal device")
         }
-        
+
         captureSession?.startRunning()
     }
-    
+
     func stop() {
-      captureSession?.stopRunning()
+        captureSession?.stopRunning()
     }
-    
+
     // MARK: Internal
 
     private func setupCaptureSession() -> Error? {
-        
+
         // Setup camera session using the back camera
         let session = AVCaptureSession()
         session.beginConfiguration()
-        
+
         session.sessionPreset = capturePreset
         session.usesApplicationAudioSession = false
 
@@ -55,46 +55,46 @@ class CameraController: NSObject {
             let videoOutputRef = self.addVideoOutput(session: session),
             let audioInputRef = self.addAudioInput(session: session),
             let audioOutputRef = self.addAudioOutput(session: session) else {
-            return CaptureSessionError.deviceNotFound
+                return CaptureSessionError.deviceNotFound
         }
-        
+
         videoInput = videoInputRef
         videoOutput = videoOutputRef
         audioInput = audioInputRef
         audioOutput = audioOutputRef
-        
+
         session.commitConfiguration()
         session.startRunning()
         captureSession = session
-        
+
         return nil
     }
-    
+
     func addVideoInput(session: AVCaptureSession) -> AVCaptureDeviceInput? {
         guard let device = CameraController.camera(withPosition: .back) else {
             return nil
         }
-     
+
         return self.addInput(device: device, session: session)
     }
-    
+
     func addAudioInput(session: AVCaptureSession) -> AVCaptureDeviceInput? {
         guard let device = CameraController.microphone() else {
             return nil
         }
-        
+
         return self.addInput(device: device, session: session)
     }
-    
-    func addInput(device:AVCaptureDevice, session: AVCaptureSession) -> AVCaptureDeviceInput? {
+
+    func addInput(device: AVCaptureDevice, session: AVCaptureSession) -> AVCaptureDeviceInput? {
         do {
             let input = try AVCaptureDeviceInput(device: device)
             guard session.canAddInput(input) else {
                 return nil
             }
-            
+
             session.addInput(input)
-            
+
             return input
         } catch let error {
             print("Error adding video input: \(error)")
@@ -108,35 +108,35 @@ class CameraController: NSObject {
             kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)
         ]
         output.alwaysDiscardsLateVideoFrames = true
-        
+
         guard session.canAddOutput(output) else {
             return nil
         }
-        
+
         output.setSampleBufferDelegate(self, queue: captureQueue)
         session.addOutput(output)
         return output
     }
-    
+
     func addAudioOutput(session: AVCaptureSession) -> AVCaptureAudioDataOutput? {
         let output = AVCaptureAudioDataOutput()
-        
+
         guard session.canAddOutput(output) else {
             return nil
         }
-        
+
         output.setSampleBufferDelegate(self, queue: captureQueue)
         session.addOutput(output)
         return output
     }
-    
+
     // MARK: Helpers
 
     private class func camera(withPosition position: AVCaptureDevice.Position) -> AVCaptureDevice? {
-        
+
         return AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera],
-                                                mediaType: AVMediaType.video,
-                                                position: position).devices.filter({ $0.position == position }).first
+            mediaType: AVMediaType.video,
+            position: position).devices.filter({ $0.position == position }).first
     }
 
     private class func microphone() -> AVCaptureDevice? {
@@ -148,13 +148,13 @@ class CameraController: NSObject {
 // MARK: AVCaptureVideoDataOutputSampleBufferDelegate
 
 extension CameraController: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate {
-    
+
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if sampleBuffer.isVideoBuffer(),
             let orientation = AVCaptureVideoOrientation(orientation: UIDevice.current.orientation) {
             connection.videoOrientation = orientation
         }
-        
+
         self.output?(sampleBuffer)
     }
 }
@@ -163,18 +163,18 @@ extension CMSampleBuffer {
     func isVideoBuffer() -> Bool {
         guard let formatDescription = CMSampleBufferGetFormatDescription(self),
             CMFormatDescriptionGetMediaType(formatDescription) == kCMMediaType_Video else {
-            return false
+                return false
         }
 
         return true
     }
-    
+
     func isAudioBuffer() -> Bool {
         guard let formatDescription = CMSampleBufferGetFormatDescription(self),
             CMFormatDescriptionGetMediaType(formatDescription) == kCMMediaType_Audio else {
                 return false
         }
-        
+
         return true
     }
 }
@@ -183,32 +183,32 @@ extension AVCaptureVideoOrientation {
     var uiInterfaceOrientation: UIInterfaceOrientation {
         get {
             switch self {
-            case .landscapeLeft:        return .landscapeLeft
-            case .landscapeRight:       return .landscapeRight
-            case .portrait:             return .portrait
-            case .portraitUpsideDown:   return .portraitUpsideDown
-            @unknown default:
+            case .landscapeLeft: return .landscapeLeft
+            case .landscapeRight: return .landscapeRight
+            case .portrait: return .portrait
+            case .portraitUpsideDown: return .portraitUpsideDown
+                @unknown default:
                 fatalError()
             }
         }
     }
-    
-    init(ui:UIInterfaceOrientation) {
+
+    init(ui: UIInterfaceOrientation) {
         switch ui {
-        case .landscapeRight:       self = .landscapeRight
-        case .landscapeLeft:        self = .landscapeLeft
-        case .portrait:             self = .portrait
-        case .portraitUpsideDown:   self = .portraitUpsideDown
-        default:                    self = .portrait
+        case .landscapeRight: self = .landscapeRight
+        case .landscapeLeft: self = .landscapeLeft
+        case .portrait: self = .portrait
+        case .portraitUpsideDown: self = .portraitUpsideDown
+        default: self = .portrait
         }
     }
-    
-    init?(orientation:UIDeviceOrientation) {
+
+    init?(orientation: UIDeviceOrientation) {
         switch orientation {
-        case .landscapeRight:       self = .landscapeLeft
-        case .landscapeLeft:        self = .landscapeRight
-        case .portrait:             self = .portrait
-        case .portraitUpsideDown:   self = .portraitUpsideDown
+        case .landscapeRight: self = .landscapeLeft
+        case .landscapeLeft: self = .landscapeRight
+        case .portrait: self = .portrait
+        case .portraitUpsideDown: self = .portraitUpsideDown
         default:
             return nil
         }

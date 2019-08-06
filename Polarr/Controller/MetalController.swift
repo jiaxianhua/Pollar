@@ -56,7 +56,6 @@ class MetalController: NSObject {
     // MARK: Processing and applying Filters
 
     private func processBuffer(_ sampleBuffer: CMSampleBuffer) {
-
         // Synchronize the texture computation so that camera frames don't go out of sync
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
 
@@ -80,20 +79,24 @@ class MetalController: NSObject {
         if let filteringPipeline = filteringPipeline {
 //            finalTexture = filteringPipeline.filter(inputTexture: texture)
             filteringPipeline.filter(inputTexture: texture) { [weak self] resultTexture in
-
                 self?.texture = resultTexture
 
                 // Step 3: convert the texture back to buffer and pass to outpur
                 if let outputTexture = resultTexture,
                     let outputSampleBuffer = MetalController.sampleBufferFromTexture(texture: outputTexture, sampleBuffer: sampleBuffer) {
-                    self?.output?(outputSampleBuffer)
+                    DispatchQueue.main.async {
+                        self?.output?(outputSampleBuffer)
+                    }
                 }
 
                 self?.semaphore.signal()
             }
         }
+        print(MetalController.count)
+        MetalController.count += 1
     }
 
+    static var count = 0;
     // MARK: Rendering
 
     private func render(texture: MTLTexture, inView metalView: MTKView, withCommandBuffer commandBuffer: MTLCommandBuffer, device: MTLDevice) {

@@ -24,7 +24,6 @@ import AVFoundation
     // MARK Interface
     
     public init?() {
-
         // Setup the assetwriter to write to a new file in documents directory
         guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             return nil
@@ -90,7 +89,6 @@ import AVFoundation
     }
     
     func appendAudioBuffer(sampleBuffer: CMSampleBuffer) {
-        
         if self.audioInput == nil {
             let input = AVAssetWriterInput(mediaType: AVMediaType.audio, outputSettings: [ AVFormatIDKey: kAudioFormatMPEG4AAC,
                                                                                            AVNumberOfChannelsKey: 1,
